@@ -25,17 +25,33 @@ class Solution {
         // return countS.equals(countT);
 
         // Hash Table
+        // int[] count = new int[26];
+
+        // for (int i = 0; i < s.length(); i++) {
+        //     count[s.charAt(i) - 'a']++;
+        //     count[t.charAt(i) - 'a']--;
+        // }
+
+        // for (int val : count) {
+        //     if (val != 0) {
+        //         return false;
+        //     }
+        // }
+
+        // return true;
+
+        // Hash Table Advanced
         int[] count = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
             count[s.charAt(i) - 'a']++;
-            count[t.charAt(i) - 'a']--;
         }
 
-        for (int val : count) {
-            if (val != 0) {
+        for (char c : t.toCharArray()) {
+            if (count[c - 'a'] <= 0) {
                 return false;
             }
+            count[c - 'a']--;
         }
 
         return true;
