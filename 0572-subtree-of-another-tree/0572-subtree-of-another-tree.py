@@ -23,27 +23,9 @@ class Solution:
         
         if root is None:
             return False
-        
-        if root.val == subRoot.val:
-            if self.isSameTree(root, subRoot):
-                return True
 
-        if root.left is not None and root.left.val == subRoot.val:
-            if self.isSameTree(root.left, subRoot):
-                return True
-        
-        if root.right is not None and root.right.val == subRoot.val:
-            if self.isSameTree(root.right, subRoot):
-                return True
+        if self.isSameTree(root, subRoot):
+            return True
 
-        left = False
-        right = False
-
-        if root.left:
-            left = self.isSubtree(root.left, subRoot)
-
-        if root.right:
-            right = self.isSubtree(root.right, subRoot)
-
-        return left or right
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
         
